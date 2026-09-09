@@ -9,7 +9,7 @@ import { build } from 'esbuild';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
-const sandbox = mkdtempSync(join(tmpdir(), 'yoworlds-package-'));
+const sandbox = mkdtempSync(join(tmpdir(), 'worldsbay-package-'));
 const consumer = join(sandbox, 'consumer');
 mkdirSync(consumer);
 const npm = process.env.npm_execpath ?? resolve(process.execPath, '../node_modules/npm/bin/npm-cli.js');

@@ -9,7 +9,7 @@ import { sha256, md5, loadConfig } from '../scripts/r2/common.mjs';
 import { pathToFileURL } from 'node:url';
 
 test('deployment configuration is optional, local and fails closed when malformed', async () => {
-  const directory = await mkdtemp(join(tmpdir(), 'yoworlds-r2-config-'));
+  const directory = await mkdtemp(join(tmpdir(), 'worldsbay-r2-config-'));
   const base = new URL('./', pathToFileURL(join(directory, 'config.json')));
   const shared = { bucket: 'test-assets', domain: 'assets.example.com' };
   await writeFile(join(directory, 'config.json'), JSON.stringify(shared));
@@ -22,7 +22,7 @@ test('deployment configuration is optional, local and fails closed when malforme
 });
 
 async function fixture() {
-  const directory = await mkdtemp(join(tmpdir(), 'yoworlds-r2-'));
+  const directory = await mkdtemp(join(tmpdir(), 'worldsbay-r2-'));
   const source = join(directory, 'source');
   await mkdir(join(source, 'licenses'), { recursive: true });
   const bytes = Buffer.from('test GLB'), hash = sha256(bytes);

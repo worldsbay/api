@@ -13,3 +13,5 @@ When npm publication is requested:
 The current ESM exports, NodeNext declarations and package file allowlist follow [npm package metadata](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/) and [TypeScript library guidance](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html). No registry release or remote CI run is claimed by the local checks.
 
 Version 0.1.0 includes guest entry, remembered sessions, hosted account navigation and the server-only `WorldClient.request(path, method, body?, grant?, options?)` adapter method. This method accepts only `/internal/` routes and preserves credential isolation, redirect rejection and timeout handling.
+
+Version 0.1.1 removes the retired brand export and uses the WorldsBay request header.

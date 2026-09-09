@@ -23,7 +23,7 @@ The initial snapshot is the modular character pack. Do not rewrite legacy item U
 
 ## Upload
 
-Create an R2 S3 credential with **Object Read & Write**, restricted to `yoworlds-assets`; choose a short expiry for a one-time upload. Copy `.env.example` to the ignored `.env` and fill `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY`. Do not commit these values. Ordinary package users need no R2 credential. The uploader explicitly supplies R2 credentials and does not use an unrelated default AWS profile.
+Create an R2 S3 credential with **Object Read & Write**, restricted to `worldsbay-assets`; choose a short expiry for a one-time upload. Copy `.env.example` to the ignored `.env` and fill `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY`. Do not commit these values. Ordinary package users need no R2 credential. The uploader explicitly supplies R2 credentials and does not use an unrelated default AWS profile.
 
 Using the plan path printed by preparation:
 

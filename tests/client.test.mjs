@@ -31,7 +31,7 @@ test('browser calls preserve methods, request bodies, markers, and same-origin c
   assert.equal(calls[0].body, undefined);
   assert.equal(calls[1].method, 'POST');
   assert.deepEqual(JSON.parse(calls[1].body), { worldId: 'world-b' });
-  assert.equal(calls[1].headers.get('x-yoworlds'), '1');
+  assert.equal(calls[1].headers.get('x-worldsbay'), '1');
   assert.equal(calls[1].headers.get('x-pocketbeyond'), '1');
   assert.equal(calls[1].headers.has('authorization'), false);
   assert.equal(calls[1].credentials, 'same-origin');

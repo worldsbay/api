@@ -19,7 +19,6 @@ export class WorldsBay {
   constructor(options: ClientOptions | string = {}) {
     this.#http = new JsonClient(typeof options === 'string' ? { baseUrl: options } : options, {
       'x-worldsbay': '1',
-      'x-yoworlds': '1',
       'x-pocketbeyond': '1',
     });
   }
@@ -125,5 +124,3 @@ export class CentralClient {
 /** @deprecated The product is now called WorldsBay. */
 export { WorldsBay as Pocketbeyond };
 
-/** @deprecated Compatibility export for existing integrations. */
-export { WorldsBay as YoWorlds };
