@@ -1,0 +1,15 @@
+{
+  "id": "fern-cap",
+  "name": "Fern cap",
+  "description": "A leafy cap for exploring connected worlds.",
+  "slot": "head",
+  "asset": "fern-cap.glb",
+  "version": "1.0.0",
+  "profile": "pocket-humanoid-v1",
+  "attachment": "Head",
+  "creator": "WorldsBay",
+  "license": "CC0-1.0",
+  "permission": "Original sample provided under CC0-1.0.",
+  "color": "#67dfd0",
+  "listed": true
+}

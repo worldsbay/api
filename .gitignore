@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.tgz
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+playwright-report/
+test-results/
+.r2-upload/
+infrastructure/r2/*.local.json
+examples/public/characters/
+examples/dist/

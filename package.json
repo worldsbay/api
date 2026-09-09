@@ -1,0 +1,87 @@
+{
+  "name": "@worldsbay/api",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "type": "module",
+  "description": "Typed browser and server clients for the WorldsBay world integration API.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worldsbay/api.git"
+  },
+  "homepage": "https://github.com/worldsbay/api#readme",
+  "bugs": {
+    "url": "https://github.com/worldsbay/api/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./room": {
+      "types": "./dist/room.d.ts",
+      "import": "./dist/room.js",
+      "default": "./dist/room.js"
+    },
+    "./assets": {
+      "types": "./dist/assets.d.ts",
+      "import": "./dist/assets.js",
+      "default": "./dist/assets.js"
+    },
+    "./schemas": {
+      "types": "./dist/schemas.d.ts",
+      "import": "./dist/schemas.js",
+      "default": "./dist/schemas.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "default": "./dist/types.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "browser": null,
+      "node": "./dist/server.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "README.md",
+    "SOURCE.md",
+    "RELEASING.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:package": "npm run build && node scripts/check-package.mjs",
+    "check": "npm run build && node --test tests/*.test.mjs && node scripts/check-package.mjs",
+    "prepack": "npm run build",
+    "assets:prepare": "node scripts/r2/prepare.mjs",
+    "assets:upload": "node --env-file-if-exists=.env scripts/r2/upload.mjs",
+    "assets:verify": "node scripts/r2/verify.mjs"
+  },
+  "dependencies": {
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "3.1127.0",
+    "@types/node": "22.20.1",
+    "esbuild": "0.28.2",
+    "typescript": "5.9.3"
+  },
+  "author": "WorldsBay <info@worldsbay.com>"
+}
