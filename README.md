@@ -2,7 +2,7 @@
 
 Typed clients for connecting an independently hosted game to WorldsBay. Character metadata and models load on demand from `https://assets.worldsbay.com`. The package contains no model binaries or rendering engine.
 
-**Preview, version 0.1.0.** This repository is independent of the main WorldsBay application. Node.js 22.12+ and npm are required for development. The output is ESM with TypeScript declarations; browsers use a bundler such as Vite. Native CommonJS is not a supported entry point.
+**Preview, version 0.1.1.** This repository is independent of the main WorldsBay application. Node.js 22.12+ and npm are required for development. The output is ESM with TypeScript declarations; browsers use a bundler such as Vite. Native CommonJS is not a supported entry point.
 
 ## Install
 
@@ -10,19 +10,14 @@ Typed clients for connecting an independently hosted game to WorldsBay. Characte
 npm install @worldsbay/api
 ```
 
-## Try the package locally
+## Develop the package
 
 ```sh
 npm ci
 npm run check
-npm pack
 ```
 
-Install the resulting archive in your game (use its actual filesystem path):
-
-```sh
-npm install /path/to/worldsbay-api-0.1.0.tgz
-```
+Game integrations install the published package with `npm install @worldsbay/api`.
 
 `npm run check` builds, runs the HTTP/WebSocket tests, packs and installs into an isolated temporary project, checks NodeNext and bundler TypeScript resolution, and verifies browser/server bundle boundaries. CI runs these checks on Windows and Linux with Node 22 and 24. No CI workflow publishes anything.
 
