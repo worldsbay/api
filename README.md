@@ -68,6 +68,8 @@ All requests accept `{ signal }` for cancellation. `RequestError` has `status` (
 
 For account entry, import `openAccountPage` and call `openAccountPage(api, { mode: 'signup' })` or `{ mode: 'signin' }` from a user action. It navigates to WorldsBay using a POST handoff so passwords stay on the central account page. A 401 from `resumeSession()` should offer an explicit entry choice; do not create a guest on a network failure.
 
+The standard WorldsBay rooms load appearance at entry and keep it during play. These appearance methods are explicit requests; the SDK does not start a polling timer. Call `refreshAppearance()` after an in-game wardrobe action when needed. Updated standard world adapters broadcast that requested revision to room peers; custom games decide how to apply it. Remote account changes do not automatically update an already-connected avatar.
+
 ## Multiplayer rooms
 
 ```ts
@@ -155,3 +157,11 @@ The server subpath is blocked for browser bundling. Central URLs must be HTTPS o
 Public types (`Appearance`, `WorldSession`, `World`, `CharacterPack`, room messages and others) are exported from the root and `/types`. Runtime Zod validators are opt-in from `/schemas`. The default client import does not load Zod or Three.js.
 
 See [RELEASING.md](RELEASING.md) for the later release steps, [SOURCE.md](SOURCE.md) for extraction details, and [LICENSE](LICENSE) for the MIT software license.
+
+## Example world and character source
+
+The [developers repository](https://github.com/worldsbay/developers) contains the
+runnable world, server adapter, character renderer, reusable editor and integration
+guides. Use this API package for clients and `AssetClient` for public CDN metadata
+and model URLs. Website starter and character archives are retired; clone the
+developers repository for source and build it locally.
