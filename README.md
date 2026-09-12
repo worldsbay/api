@@ -2,7 +2,7 @@
 
 Typed clients for connecting an independently hosted game to WorldsBay. Character metadata and models load on demand from `https://assets.worldsbay.com`. The package contains no model binaries or rendering engine.
 
-**Preview, version 0.1.1.** This repository is independent of the main WorldsBay application. Node.js 22.12+ and npm are required for development. The output is ESM with TypeScript declarations; browsers use a bundler such as Vite. Native CommonJS is not a supported entry point.
+**Preview, version 0.1.2.** This repository is independent of the main WorldsBay application. Node.js 22.12+ and npm are required for development. The output is ESM with TypeScript declarations; browsers use a bundler such as Vite. Native CommonJS is not a supported entry point.
 
 ## Install
 
@@ -100,6 +100,24 @@ const pack = await central.getCharacterPack();
 ```
 
 Use your actual central origin, including its port for local development. The deployment must expose the relevant endpoint and allow the requesting browser origin. `getBootstrap()` also returns enabled capabilities. This client is read-only; account creation, sign-in, free item claims, registration and central character writes remain in central's own UI. All listed wardrobe items are free to claim. `openWardrobe()` and `openStore()` both open that wardrobe through the existing world route.
+
+## Avatar styles and world support
+
+Players can save a `low-poly` and a `detailed` look independently. Worlds declare `avatarSupport` during registration or in world settings:
+
+| Value | Accepted avatars |
+| --- | --- |
+| `["low-poly"]` | Low poly |
+| `["detailed"]` | Detailed |
+| `["low-poly", "detailed"]` | Both styles |
+| `[]` | The world's own avatars |
+| omitted | Legacy behavior; support is not declared |
+
+`World.avatarSupport` is returned through discovery and world sessions. `Appearance.avatarStyle` identifies the selected look. When `Appearance.avatarSupported === false`, render your game's own avatar and keep `appearance.player` as the player identity; do not load the supplied personal model. Omitted fields remain compatible with older servers. Central selects a compatible saved look without changing the player's preference.
+
+`AvatarStyle`, `AvatarSlots`, and `CentralMe` are exported types. `avatarStyleSchema` and `avatarSupportSchema` are available from `@worldsbay/api/schemas`. The central browser-session `/api/me` response includes `avatarSlots`; saving through `/api/character` updates only the recipe's style and remains revision-checked. Central account writes stay in the central UI; `CentralClient` remains read-only and world credentials cannot edit a player's looks.
+
+Version 0.1.2 also aligns character recipe schemas with saved detailed characters: beard selections and per-item fabric, trim, and leather colors. Update the [developer starter](https://github.com/worldsbay/developers) and rebuild to receive renderer/editor changes; updating this SDK alone does not replace a game's renderer.
 
 ## Dynamic character assets
 

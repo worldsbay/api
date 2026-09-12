@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import type { AvatarStyle } from '../wire/avatar-support.js';
+import type { CharacterRecipe } from '../character/contract.js';
 
 import { PROFILE } from './profile.js';
 import type { WorldDefinition } from '../wire/world.js';
@@ -41,10 +43,18 @@ export type World = {
   entryPath: string;
   accent: string;
   thumbnail?: string;
+  tags?: string[];
+  group?: string;
+  avatarSupport?: AvatarStyle[];
   definition?: WorldDefinition;
 };
 export type Player = { id: string; name: string; color: string };
+export type AvatarSlots = Partial<Record<AvatarStyle, CharacterRecipe>>;
 export type Appearance = {
+  /** Style chosen for this appearance; optional for older servers. */
+  avatarStyle?: AvatarStyle;
+  /** False means the game must render its own avatar, retaining player identity. */
+  avatarSupported?: boolean;
   player: Player;
   revision?: number;
   profile: typeof PROFILE | typeof CHARACTER_PROFILE;
@@ -82,4 +92,14 @@ export type WorldAccount = {
   provider?: 'local' | 'supabase';
   confirmationPending?: boolean;
   displayName?: string;
+};
+
+/** Central browser-session response. World credentials do not authorize this endpoint. */
+export type CentralMe = Wardrobe & {
+  account: WorldAccount;
+  avatarSlots?: AvatarSlots;
+  characterRecipe?: CharacterRecipe;
+  avatarId: string;
+  avatars: { id: string; name: string; revision: string }[];
+  returnWorld: World | null;
 };

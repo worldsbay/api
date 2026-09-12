@@ -52,6 +52,13 @@ const bootstrap: Bootstrap = {
   hubWorldId: 'world-a', characterBuilder: true, auth: { provider: 'local' },
   players: [], demoIdentities: false, worlds: [],
 };
+const support: import('@worldsbay/api').AvatarStyle[] = ['low-poly', 'detailed'];
+const slots: import('@worldsbay/api').AvatarSlots = {};
+const current: import('@worldsbay/api').CentralMe | undefined = undefined;
+const compatible: boolean | undefined = appearance.avatarSupported;
+const style: import('@worldsbay/api').AvatarStyle | undefined = appearance.avatarStyle;
+// @ts-expect-error invalid visual style
+support.push('realistic');
 const assets = new AssetClient();
 const pack: CharacterPack = await assets.getCharacterPack();
 if (appearance.character) assets.resolveCharacter(appearance.character);

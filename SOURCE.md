@@ -1,6 +1,6 @@
 # Source
 
-WorldsBay API 0.1.0 is a standalone browser and server SDK, prepared on 2026-09-09. Builds do not read the parent application repository.
+WorldsBay API 0.1.2 is a standalone browser and server SDK, prepared on 2026-09-09. Builds do not read the parent application repository.
 
 Shared contract types are bundled with the package; character binaries are delivered separately by https://assets.worldsbay.com. Keep these contracts aligned with the WorldsBay services.
 
